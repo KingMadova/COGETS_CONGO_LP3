@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--  *****   Link To Custom CSS Style Sheet   *****  -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
+    <!--  *****   Link To Font Awsome Icons   *****  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeries | Projets</title>
+  </head>
+  <body>
+    <section class="portfolio">
+      <!-- 
+    - #HEADER
+  -->
+
+      <header class="header" data-header>
+        <div class="container">
+          <h1>
+            <a href="#" class="logo">COGETS CONGO </a>
+          </h1>
+
+          <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+              <a href="#home" class="logo">COGETS CONGO </a>
+
+              <button
+                class="nav-close-btn"
+                aria-label="Clsoe menu"
+                data-nav-toggler
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+
+            <ul class="navbar-list">
+              <li class="navbar-item">
+                <a href="index.html" class="navbar-link" data-nav-link>
+                  <span>Accueil</span>
+
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </a>
+              </li>
+
+              <li class="navbar-item">
+                <a href="galerie.html" class="navbar-link" data-nav-link>
+                  <span>Galerie</span>
+
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </a>
+              </li>
+
+              <li class="navbar-item">
+                <a href="qui_sommes.html" class="navbar-link" data-nav-link>
+                  <span>Qui sommes-nous </span>
+
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header-contact">
+            <div>
+              <p class="contact-label">Centre d'Appel</p>
+
+              <a href="tel:12345678910" class="contact-number"
+                >1 234 567 8910</a
+              >
+            </div>
+
+            <div class="contact-icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+          </div>
+
+          <button class="nav-open-btn" aria-label="Open menu" data-nav-toggler>
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+
+          <div class="overlay" data-nav-toggler data-overlay></div>
+        </div>
+      </header>
+
+      <section id="galerie" class="portfolio">
+        <div class="section-head">
+          <h1>Galerie de nos projets</h1>
+        </div>
+
+        <div class="button-group">
+          <button class="button active" data-filter="*">Tous</button>
+          <button class="button" data-filter=".design">Emeraude</button>
+          <button class="button" data-filter=".development">
+            instrum EMVU
+          </button>
+          <button class="button" data-filter=".logo">Resinage sur MIKE</button>
+        </div>
+
+        <div class="gallery">
+          <div class="item design">
+            <img src="assets/images/project-4.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item design">
+            <img src="assets/images/project-5.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item design">
+            <img src="assets/images/project-6.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item development">
+            <img src="assets/images/project-1.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item development">
+            <img src="assets/images/project-2.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item development vertical">
+            <img src="assets/images/project-3.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item logo">
+            <img src="assets/images/blog-1.jpg" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item design big-square">
+            <img src="assets/images/Emeraude 1.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item design">
+            <img src="assets/images/Emeraude 2.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item logo">
+            <img src="assets/images/Resinage Mike 1.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item logo horizontal">
+            <img src="assets/images/Resinage Mike 2.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item development">
+            <img src="assets/images/instrum EMVU 1.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+          <div class="item development">
+            <img src="assets/images/instrum EMVU 2.png" />
+            <div class="overlay"><a href="#">VIEW MORE</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!--   *****   JQuery Link   *****   -->
+      <!-- JQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <!-- Isotope -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+      <script>
+        var $galleryContainer = $(".gallery").isotope({
+          itemSelector: ".item",
+          layoutMode: "fitRows"
+        });
+
+        $(".button-group .button").on("click", function () {
+          $(".button-group .button").removeClass("active");
+          $(this).addClass("active");
+          var value = $(this).attr("data-filter");
+          $galleryContainer.isotope({ filter: value });
+        });
+      </script>
+    </section>
+  </body>
+</html>
