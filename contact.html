@@ -116,6 +116,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
       }
 
       .logo {
@@ -123,6 +124,7 @@
         font-weight: 700;
         color: var(--primary-color);
         text-decoration: none;
+        z-index: 1001;
       }
 
       .navbar {
@@ -198,6 +200,7 @@
         display: none;
         font-size: 1.5rem;
         cursor: pointer;
+        z-index: 1001;
       }
 
       /* HERO SECTION */
@@ -283,7 +286,7 @@
         margin-bottom: 20px;
       }
 
-      .contact-icon {
+      .contact-icon-box {
         background: #eef2ff;
         width: 50px;
         height: 50px;
@@ -481,12 +484,14 @@
 
       .footer-text {
         margin-bottom: 20px;
+        line-height: 1.7;
       }
 
       .social-list {
         display: flex;
         list-style: none;
         gap: 15px;
+        margin-top: 20px;
       }
 
       .social-link {
@@ -530,6 +535,9 @@
 
       .footer-list li {
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .footer-link {
@@ -556,6 +564,11 @@
       .copyright-link {
         color: var(--secondary-color);
         text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .copyright-link:hover {
+        text-decoration: underline;
       }
 
       /* RESPONSIVE */
@@ -579,7 +592,30 @@
 
       @media (max-width: 768px) {
         .navbar {
-          display: none;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 280px;
+          height: 100vh;
+          background-color: white;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          padding: 80px 20px 20px;
+          transition: var(--transition);
+          z-index: 1000;
+        }
+
+        .navbar.active {
+          right: 0;
+        }
+
+        .navbar-list {
+          flex-direction: column;
+        }
+
+        .navbar-item {
+          margin: 15px 0;
         }
 
         .nav-toggle {
@@ -725,7 +761,7 @@
               <h3>Nos coordonnées</h3>
 
               <div class="contact-item">
-                <div class="contact-icon">
+                <div class="contact-icon-box">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="contact-details">
@@ -737,7 +773,7 @@
               </div>
 
               <div class="contact-item">
-                <div class="contact-icon">
+                <div class="contact-icon-box">
                   <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="contact-details">
@@ -750,7 +786,7 @@
               </div>
 
               <div class="contact-item">
-                <div class="contact-icon">
+                <div class="contact-icon-box">
                   <i class="fas fa-envelope"></i>
                 </div>
                 <div class="contact-details">
@@ -812,6 +848,7 @@
                     name="name"
                     class="form-control"
                     required
+                    placeholder="Votre nom complet"
                   />
                 </div>
 
@@ -823,6 +860,7 @@
                     name="email"
                     class="form-control"
                     required
+                    placeholder="votre@email.com"
                   />
                 </div>
 
@@ -833,6 +871,7 @@
                     id="phone"
                     name="phone"
                     class="form-control"
+                    placeholder="+242 00 000 00 00"
                   />
                 </div>
 
@@ -864,6 +903,7 @@
                     name="message"
                     class="form-control"
                     required
+                    placeholder="Décrivez votre demande en détail..."
                   ></textarea>
                 </div>
 
@@ -970,13 +1010,12 @@
 
     <!-- SCRIPT POUR LE RESPONSIVE -->
     <script>
-      // Toggle du menu mobile
+      // Toggle du menu mobile (CORRIGÉ)
       const navToggle = document.querySelector(".nav-toggle");
       const navbar = document.querySelector(".navbar");
 
       navToggle.addEventListener("click", () => {
-        navbar.style.display =
-          navbar.style.display === "flex" ? "none" : "flex";
+        navbar.classList.toggle("active");
       });
 
       // Fermer le menu quand on clique sur un lien
@@ -984,7 +1023,7 @@
       navLinks.forEach((link) => {
         link.addEventListener("click", () => {
           if (window.innerWidth <= 768) {
-            navbar.style.display = "none";
+            navbar.classList.remove("active");
           }
         });
       });
@@ -992,10 +1031,28 @@
       // Adaptation au redimensionnement
       window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
-          navbar.style.display = "flex";
-        } else {
-          navbar.style.display = "none";
+          navbar.classList.remove("active");
         }
+      });
+
+      // Gestion du formulaire
+      const contactForm = document.querySelector(".contact-form");
+
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Récupération des valeurs du formulaire
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+
+        // Message de confirmation
+        alert(
+          `Merci ${name} ! Votre message concernant "${subject}" a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`
+        );
+
+        // Réinitialisation du formulaire
+        contactForm.reset();
       });
     </script>
   </body>

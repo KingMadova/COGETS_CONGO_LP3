@@ -2,16 +2,8 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COGETS CONGO - Solutions Industrielles Onshore & Offshore</title>
-
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      href="./assets/images/favicon.ico"
-      type="image/svg+xml"
-    />
+    <title>COGETS CONGO - Solutions Industrielles</title>
 
     <!-- Style intégré -->
     <style>
@@ -204,6 +196,79 @@
       .nav-toggle {
         display: none;
         font-size: 1.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: var(--primary-color);
+      }
+
+      /* Menu mobile */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: white;
+        z-index: 1001;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 80px 20px 20px;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu .navbar-list {
+        display: block;
+      }
+
+      .mobile-menu .navbar-item {
+        margin: 0 0 15px 0;
+      }
+
+      .mobile-menu .navbar-link {
+        display: block;
+        padding: 10px 15px;
+        border-radius: 6px;
+        background-color: #f5f5f5;
+      }
+
+      .mobile-menu .navbar-link:hover {
+        background-color: #e9e9e9;
+      }
+
+      .mobile-menu .header-contact {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: none;
+      }
+
+      .menu-overlay.active {
+        display: block;
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--primary-color);
         cursor: pointer;
       }
 
@@ -732,11 +797,46 @@
           </div>
         </div>
 
-        <div class="nav-toggle">
+        <button class="nav-toggle" id="navToggle">
           <i class="fas fa-bars"></i>
-        </div>
+        </button>
       </div>
     </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="close-menu" id="closeMenu">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="index.html" class="navbar-link active">Accueil</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#services" class="navbar-link">Services</a>
+        </li>
+        <li class="navbar-item">
+          <a href="galerie.html" class="navbar-link">Galerie</a>
+        </li>
+        <li class="navbar-item">
+          <a href="qui_sommes.html" class="navbar-link">Qui sommes-nous</a>
+        </li>
+        <li class="navbar-item">
+          <a href="contact.html" class="navbar-link">Contact</a>
+        </li>
+      </ul>
+      <div class="header-contact">
+        <div>
+          <p class="contact-label">Centre d'Appel</p>
+          <a href="tel:12345678910" class="contact-number">1 234 567 8910</a>
+        </div>
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -872,10 +972,7 @@
           <!-- Service 3 -->
           <div class="service-card">
             <div class="service-image">
-              <img
-                src="assets/images/about-banner.jpg"
-                alt="Travaux offshore"
-              />
+              <img src="assets/images/hero-banner.jpg" alt="Travaux offshore" />
             </div>
             <div class="service-content">
               <span class="service-number">03</span>
@@ -975,7 +1072,7 @@
           <!-- Project 3 -->
           <div class="project-card">
             <div class="project-image">
-              <img src="assets/images/7.png" alt="Chantier naval" />
+              <img src="assets/images/6.png" alt="Chantier naval" />
             </div>
             <div class="project-overlay">
               <h3 class="project-title">Chantier naval</h3>
@@ -1079,33 +1176,41 @@
       </div>
     </footer>
 
-    <!-- SCRIPT POUR LE RESPONSIVE -->
+    <!-- SCRIPT POUR LE RESPONSIVE ET LE MENU MOBILE -->
     <script>
-      // Toggle du menu mobile
-      const navToggle = document.querySelector(".nav-toggle");
-      const navbar = document.querySelector(".navbar");
+      // Menu mobile
+      const navToggle = document.getElementById("navToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
+      const menuOverlay = document.getElementById("menuOverlay");
 
+      // Ouvrir le menu mobile
       navToggle.addEventListener("click", () => {
-        navbar.style.display =
-          navbar.style.display === "flex" ? "none" : "flex";
+        mobileMenu.classList.add("active");
+        menuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
       });
+
+      // Fermer le menu mobile
+      function closeMobileMenu() {
+        mobileMenu.classList.remove("active");
+        menuOverlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      closeMenu.addEventListener("click", closeMobileMenu);
+      menuOverlay.addEventListener("click", closeMobileMenu);
 
       // Fermer le menu quand on clique sur un lien
-      const navLinks = document.querySelectorAll(".navbar-link");
+      const navLinks = document.querySelectorAll(".mobile-menu .navbar-link");
       navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          if (window.innerWidth <= 768) {
-            navbar.style.display = "none";
-          }
-        });
+        link.addEventListener("click", closeMobileMenu);
       });
 
-      // Adaptation au redimensionnement
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-          navbar.style.display = "flex";
-        } else {
-          navbar.style.display = "none";
+      // Fermer le menu avec la touche Échap
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
         }
       });
     </script>

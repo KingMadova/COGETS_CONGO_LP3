@@ -105,6 +105,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
       }
 
       .logo {
@@ -187,6 +188,7 @@
         display: none;
         font-size: 1.5rem;
         cursor: pointer;
+        z-index: 1001;
       }
 
       /* HERO SECTION */
@@ -338,14 +340,14 @@
         overflow-y: auto;
         background-color: white;
         border-radius: 8px;
-        padding: 20px;
+        padding: 30px;
       }
 
       .modal-close {
         position: absolute;
         top: 15px;
         right: 15px;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         color: var(--dark-color);
         cursor: pointer;
         z-index: 10;
@@ -357,12 +359,20 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .modal-close:hover {
+        color: var(--primary-color);
+        transform: rotate(90deg);
       }
 
       .modal-image {
         width: 100%;
         border-radius: 8px;
         margin-bottom: 20px;
+        max-height: 400px;
+        object-fit: cover;
       }
 
       .modal-title {
@@ -384,6 +394,7 @@
       .modal-description {
         color: var(--dark-color);
         line-height: 1.7;
+        font-size: 1.05rem;
       }
 
       /* FOOTER */
@@ -416,12 +427,14 @@
 
       .footer-text {
         margin-bottom: 20px;
+        line-height: 1.7;
       }
 
       .social-list {
         display: flex;
         list-style: none;
         gap: 15px;
+        margin-top: 20px;
       }
 
       .social-link {
@@ -465,6 +478,9 @@
 
       .footer-list li {
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .footer-link {
@@ -491,6 +507,11 @@
       .copyright-link {
         color: var(--secondary-color);
         text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .copyright-link:hover {
+        text-decoration: underline;
       }
 
       /* RESPONSIVE */
@@ -514,7 +535,30 @@
 
       @media (max-width: 768px) {
         .navbar {
-          display: none;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 280px;
+          height: 100vh;
+          background-color: white;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          padding: 80px 20px 20px;
+          transition: var(--transition);
+          z-index: 1000;
+        }
+
+        .navbar.active {
+          right: 0;
+        }
+
+        .navbar-list {
+          flex-direction: column;
+        }
+
+        .navbar-item {
+          margin: 15px 0;
         }
 
         .nav-toggle {
@@ -591,9 +635,6 @@
               <a href="index.html" class="navbar-link">Accueil</a>
             </li>
             <li class="navbar-item">
-              <a href="#services" class="navbar-link">Services</a>
-            </li>
-            <li class="navbar-item">
               <a href="galerie.html" class="navbar-link active">Galerie</a>
             </li>
             <li class="navbar-item">
@@ -666,7 +707,7 @@
           <!-- Project 1 -->
           <div class="gallery-item" data-category="emeraude">
             <img
-              src="assets/images/4.png"
+              src="assets/images/Emeraude 1.png"
               alt="Plateforme Emeraude"
               class="gallery-image"
             />
@@ -679,7 +720,7 @@
           <!-- Project 2 -->
           <div class="gallery-item" data-category="emeraude">
             <img
-              src="assets/images/2.png"
+              src="assets/images/Emeraude 2.png"
               alt="Plateforme Emeraude"
               class="gallery-image"
             />
@@ -692,7 +733,7 @@
           <!-- Project 3 -->
           <div class="gallery-item" data-category="emvu">
             <img
-              src="assets/images/project-1.jpg"
+              src="assets/images/instrum EMVU 1.png"
               alt="Instrum EMVU"
               class="gallery-image"
             />
@@ -705,7 +746,7 @@
           <!-- Project 4 -->
           <div class="gallery-item" data-category="emvu">
             <img
-              src="assets/images/6.png"
+              src="assets/images/instrum EMVU 2.png"
               alt="Instrum EMVU"
               class="gallery-image"
             />
@@ -718,7 +759,7 @@
           <!-- Project 5 -->
           <div class="gallery-item" data-category="emvu">
             <img
-              src="assets/images/5.png"
+              src="assets/images/project-1.jpg"
               alt="Instrum EMVU"
               class="gallery-image"
             />
@@ -731,7 +772,7 @@
           <!-- Project 6 -->
           <div class="gallery-item" data-category="mike">
             <img
-              src="assets/images/blog-1.png"
+              src="assets/images/Resinage Mike 1.png"
               alt="Résinage sur MIKE"
               class="gallery-image"
             />
@@ -744,7 +785,7 @@
           <!-- Project 7 -->
           <div class="gallery-item" data-category="emeraude">
             <img
-              src="assets/images/11.png"
+              src="assets/images/Resinage Mike 2.png"
               alt="Plateforme Emeraude"
               class="gallery-image"
             />
@@ -757,7 +798,7 @@
           <!-- Project 8 -->
           <div class="gallery-item" data-category="emeraude">
             <img
-              src="assets/images/8.png"
+              src="assets/images/10.png"
               alt="Plateforme Emeraude"
               class="gallery-image"
             />
@@ -770,7 +811,7 @@
           <!-- Project 9 -->
           <div class="gallery-item" data-category="mike">
             <img
-              src="assets/images/1.png"
+              src="assets/images/5.png"
               alt="Résinage sur MIKE"
               class="gallery-image"
             />
@@ -783,7 +824,7 @@
           <!-- Project 10 -->
           <div class="gallery-item" data-category="mike">
             <img
-              src="assets/images/10.png"
+              src="assets/images/2.png"
               alt="Résinage sur MIKE"
               class="gallery-image"
             />
@@ -796,7 +837,7 @@
           <!-- Project 11 -->
           <div class="gallery-item" data-category="offshore">
             <img
-              src="assets/images/9.png"
+              src="assets/images/1.png"
               alt="Travaux Offshore"
               class="gallery-image"
             />
@@ -809,7 +850,7 @@
           <!-- Project 12 -->
           <div class="gallery-item" data-category="offshore">
             <img
-              src="assets/images/7.png"
+              src="assets/images/4.png"
               alt="Travaux Offshore"
               class="gallery-image"
             />
@@ -924,13 +965,12 @@
 
     <!-- SCRIPT POUR LA GALERIE -->
     <script>
-      // Toggle du menu mobile
+      // Toggle du menu mobile (CORRIGÉ)
       const navToggle = document.querySelector(".nav-toggle");
       const navbar = document.querySelector(".navbar");
 
       navToggle.addEventListener("click", () => {
-        navbar.style.display =
-          navbar.style.display === "flex" ? "none" : "flex";
+        navbar.classList.toggle("active");
       });
 
       // Fermer le menu quand on clique sur un lien
@@ -938,7 +978,7 @@
       navLinks.forEach((link) => {
         link.addEventListener("click", () => {
           if (window.innerWidth <= 768) {
-            navbar.style.display = "none";
+            navbar.classList.remove("active");
           }
         });
       });
@@ -946,9 +986,7 @@
       // Adaptation au redimensionnement
       window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
-          navbar.style.display = "flex";
-        } else {
-          navbar.style.display = "none";
+          navbar.classList.remove("active");
         }
       });
 
@@ -986,75 +1024,75 @@
       const modalDescription = document.querySelector(".modal-description");
       const modalClose = document.querySelector(".modal-close");
 
-      // Données des projets (pour la démonstration)
+      // Données des projets
       const projects = {
-        "4.png": {
+        "hero-banner.jpg": {
           title: "Plateforme Emeraude - Travaux de résinage",
           category: "Plateforme Emeraude",
           description:
             "Travaux de résinage professionnel effectués sur la plateforme Emeraude. Notre équipe a appliqué un revêtement protecteur de haute qualité pour assurer la durabilité des structures métalliques dans l'environnement marin exigeant."
         },
-        "2.png": {
+        "project-1.jpg": {
           title: "Installations techniques sur Emeraude",
           category: "Plateforme Emeraude",
           description:
             "Installation de systèmes techniques complexes sur la plateforme Emeraude. Nos ingénieurs ont conçu et mis en place des solutions adaptées aux contraintes spécifiques de l'environnement offshore."
         },
-        "project-1.jpg": {
+        "assets/images/project-1.jpg": {
           title: "Instrumentation EMVU",
           category: "Instrum EMVU",
           description:
             "Installation de systèmes d'instrumentation de pointe pour le projet EMVU. Ces équipements permettent un contrôle précis des processus industriels dans des conditions extrêmes."
         },
-        "6.png": {
+        "assets/images/6.png": {
           title: "Systèmes de contrôle EMVU",
           category: "Instrum EMVU",
           description:
             "Mise en place de systèmes de contrôle automatisés pour le projet EMVU. Ces installations permettent une supervision centralisée des opérations industrielles avec une haute fiabilité."
         },
-        "5.png": {
+        "assets/images/5.png": {
           title: "Installation électrique EMVU",
           category: "Instrum EMVU",
           description:
             "Installation complète du système électrique pour le projet EMVU. Notre équipe a conçu un réseau électrique robuste répondant aux normes de sécurité les plus strictes."
         },
-        "blog-1.png": {
+        "assets/images/blog-1.png": {
           title: "Résinage sur plateforme MIKE",
           category: "Résinage sur MIKE",
           description:
             "Application de résine protectrice sur les structures de la plateforme MIKE. Cette intervention prolonge la durée de vie des installations exposées aux éléments corrosifs."
         },
-        "11.png": {
+        "assets/images/11.png": {
           title: "Maintenance offshore sur Emeraude",
           category: "Plateforme Emeraude",
           description:
             "Opérations de maintenance préventive réalisées sur la plateforme Emeraude. Notre équipe spécialisée intervient régulièrement pour garantir le bon fonctionnement des installations."
         },
-        "8.png": {
+        "assets/images/8.png": {
           title: "Soudure spécialisée offshore",
           category: "Plateforme Emeraude",
           description:
             "Travaux de soudure de précision réalisés dans des conditions offshore difficiles. Nos soudeurs certifiés garantissent des joints parfaits répondant aux normes industrielles."
         },
-        "1.png": {
+        "assets/images/1.png": {
           title: "Application industrielle sur MIKE",
           category: "Résinage sur MIKE",
           description:
             "Application de revêtements industriels sur la plateforme MIKE. Ces traitements de surface protègent les équipements contre la corrosion et l'usure."
         },
-        "10.png": {
+        "assets/images/10.png": {
           title: "Contrôle qualité du résinage",
           category: "Résinage sur MIKE",
           description:
             "Contrôle qualité rigoureux après application du revêtement protecteur. Nos inspecteurs vérifient l'homogénéité et l'adhérence du revêtement pour garantir sa durabilité."
         },
-        "9.png": {
+        "assets/images/9.png": {
           title: "Installation de pipelines offshore",
           category: "Travaux Offshore",
           description:
             "Pose de pipelines sous-marins pour un projet offshore majeur. Notre équipe a réalisé cette installation complexe avec une précision millimétrique."
         },
-        "7.png": {
+        "assets/images/7.png": {
           title: "Maintenance préventive offshore",
           category: "Travaux Offshore",
           description:
@@ -1065,25 +1103,28 @@
       // Ouvrir le modal au clic sur une image
       galleryItems.forEach((item) => {
         item.addEventListener("click", () => {
-          const imageSrc = item.querySelector("img").src.split("/").pop();
-          const projectData = projects[imageSrc];
+          const imageSrc = item.querySelector("img").src;
+          const imageName = imageSrc.split("/").pop();
+          const projectData = projects[imageName] || {
+            title: item.querySelector(".gallery-title").textContent,
+            category: item.querySelector(".gallery-category").textContent,
+            description: "Description détaillée du projet..."
+          };
 
-          if (projectData) {
-            modalImage.src = item.querySelector("img").src;
-            modalTitle.textContent = projectData.title;
-            modalCategory.textContent = projectData.category;
-            modalDescription.textContent = projectData.description;
+          modalImage.src = imageSrc;
+          modalTitle.textContent = projectData.title;
+          modalCategory.textContent = projectData.category;
+          modalDescription.textContent = projectData.description;
 
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden"; // Empêcher le défilement de la page
-          }
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
         });
       });
 
       // Fermer le modal
       modalClose.addEventListener("click", () => {
         modal.classList.remove("active");
-        document.body.style.overflow = "auto"; // Rétablir le défilement
+        document.body.style.overflow = "auto";
       });
 
       // Fermer le modal en cliquant à l'extérieur
