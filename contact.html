@@ -4,16 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COGETS CONGO - Solutions Industrielles Onshore & Offshore</title>
+    <title>Contact - COGETS_CONGO</title>
 
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      href="./assets/images/favicon.ico"
-      type="image/svg+xml"
-    />
-
-    <!-- Style intégré -->
+    <!-- Style intégré pour la démonstration -->
     <style>
       /* RESET ET STYLES DE BASE */
       * {
@@ -241,261 +234,220 @@
         margin-bottom: 30px;
       }
 
-      /* ABOUT SECTION */
-      .about-section {
-        background-color: var(--light-color);
+      /* CONTACT SECTION */
+      .contact-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
       }
 
-      .about-container {
+      .contact-container {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        gap: 40px;
+        gap: 30px;
       }
 
-      .about-image {
+      .contact-info,
+      .contact-form {
         flex: 1;
         min-width: 300px;
+      }
+
+      .contact-info-box {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+
+      .contact-info-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 22px;
         position: relative;
+        padding-bottom: 10px;
       }
 
-      .about-image img {
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .about-badge {
+      .contact-info-box h3::after {
+        content: "";
         position: absolute;
-        bottom: -20px;
-        right: -20px;
-        background-color: var(--primary-color);
-        color: white;
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-weight: 700;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
       }
 
-      .about-content {
-        flex: 1;
-        min-width: 300px;
-      }
-
-      .about-list {
-        list-style: none;
-        margin: 20px 0;
-      }
-
-      .about-item {
+      .contact-item {
         display: flex;
-        align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
 
-      .about-icon {
-        width: 40px;
-        height: 40px;
-        background-color: rgba(30, 58, 138, 0.1);
+      .contact-icon {
+        background: #eef2ff;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-right: 15px;
         color: var(--primary-color);
+        font-size: 20px;
       }
 
-      /* SERVICES SECTION */
-      .services-section {
-        background-color: white;
+      .contact-details h4 {
+        margin-bottom: 5px;
+        font-size: 18px;
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .service-card {
-        background-color: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        transition: var(--transition);
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .service-image {
-        height: 200px;
-        overflow: hidden;
-      }
-
-      .service-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .service-card:hover .service-image img {
-        transform: scale(1.1);
-      }
-
-      .service-content {
-        padding: 25px;
-      }
-
-      .service-number {
-        display: inline-block;
-        background-color: var(--primary-color);
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 40px;
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
-
-      .service-title {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: var(--dark-color);
-      }
-
-      .service-text {
+      .contact-details p,
+      .contact-details a {
         color: var(--gray-color);
-        margin-bottom: 20px;
-      }
-
-      .service-link {
-        display: inline-flex;
-        align-items: center;
-        color: var(--primary-color);
-        font-weight: 600;
+        margin: 0;
         text-decoration: none;
-      }
-
-      .service-link i {
-        margin-left: 5px;
         transition: var(--transition);
       }
 
-      .service-link:hover i {
-        transform: translateX(5px);
-      }
-
-      /* FEATURES SECTION */
-      .features-section {
-        background-color: var(--light-color);
-      }
-
-      .features-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-      }
-
-      .feature-card {
-        flex: 1;
-        min-width: 300px;
-        background-color: white;
-        border-radius: 8px;
-        padding: 40px 30px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        transition: var(--transition);
-      }
-
-      .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .feature-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        background-color: rgba(30, 58, 138, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
+      .contact-details a:hover {
         color: var(--primary-color);
       }
 
-      .feature-title {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-      }
-
-      .feature-text {
-        color: var(--gray-color);
-      }
-
-      /* PROJECTS SECTION */
-      .projects-section {
-        background-color: white;
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
-      .project-card {
-        position: relative;
+      .contact-form-box {
+        background: white;
+        padding: 30px;
         border-radius: 8px;
-        overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       }
 
-      .project-image {
-        height: 250px;
-        overflow: hidden;
+      .contact-form-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 22px;
+        position: relative;
+        padding-bottom: 10px;
       }
 
-      .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .project-card:hover .project-image img {
-        transform: scale(1.1);
-      }
-
-      .project-overlay {
+      .contact-form-box h3::after {
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      .contact-form-box p {
+        margin-bottom: 20px;
+        color: var(--gray-color);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark-color);
+      }
+
+      .form-control {
         width: 100%;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        color: white;
-        transform: translateY(100%);
+        padding: 12px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 16px;
         transition: var(--transition);
       }
 
-      .project-card:hover .project-overlay {
-        transform: translateY(0);
+      .form-control:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
       }
 
-      .project-title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
       }
 
-      .project-category {
-        color: var(--secondary-color);
+      .btn-submit {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-block;
+        width: 100%;
+      }
+
+      .btn-submit:hover {
+        background: #152c6e;
+      }
+
+      .map-container {
+        height: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* HORAIRES */
+      .hours-box {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .hours-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 22px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .hours-box h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      .hours-list {
+        list-style: none;
+      }
+
+      .hours-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .hours-item:last-child {
+        border-bottom: none;
+      }
+
+      .day {
         font-weight: 600;
       }
 
@@ -646,12 +598,8 @@
           font-size: 1rem;
         }
 
-        .about-container {
+        .contact-container {
           flex-direction: column;
-        }
-
-        .about-image {
-          order: -1;
         }
       }
 
@@ -670,6 +618,12 @@
 
         .hero-title {
           font-size: 1.8rem;
+        }
+
+        .contact-info-box,
+        .contact-form-box,
+        .hours-box {
+          padding: 20px;
         }
 
         .footer-top {
@@ -699,16 +653,16 @@
     <header class="header">
       <div class="container">
         <h1>
-          <a href="index.html" class="logo">COGETS CONGO</a>
+          <a href="index.html" class="logo">COGETS CONGO </a>
         </h1>
 
         <nav class="navbar">
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="index.html" class="navbar-link active">Accueil</a>
+              <a href="index.html" class="navbar-link">Accueil</a>
             </li>
             <li class="navbar-item">
-              <a href="#services" class="navbar-link">Services</a>
+              <a href="index.html#service" class="navbar-link">Services</a>
             </li>
             <li class="navbar-item">
               <a href="galerie.html" class="navbar-link">Galerie</a>
@@ -717,7 +671,7 @@
               <a href="qui_sommes.html" class="navbar-link">Qui sommes-nous</a>
             </li>
             <li class="navbar-item">
-              <a href="contact.html" class="navbar-link">Contact</a>
+              <a href="contact.html" class="navbar-link active">Contact</a>
             </li>
           </ul>
         </nav>
@@ -742,250 +696,183 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">
-            Solutions Industrielles <span>Onshore & Offshore</span>
-          </h1>
+          <h1 class="hero-title">Contactez-nous</h1>
           <p class="hero-text">
-            Votre partenaire en solutions industrielles depuis 2014. Expertise
-            en résinage, plomberie, chaudronnerie et plus encore...
+            Notre équipe est à votre disposition pour répondre à toutes vos
+            questions et besoins.
           </p>
-          <div class="hero-buttons">
-            <a href="#services" class="btn btn-outline">Nos Services</a>
-            <a href="contact.html" class="btn">Demander un devis</a>
-          </div>
+          <a href="#contact" class="btn btn-outline">Nous contacter</a>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section about-section" id="about">
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
       <div class="container">
-        <div class="about-container">
-          <div class="about-image">
-            <img
-              src="assets/images/about-banner.jpg"
-              alt="Équipe COGETS CONGO"
-            />
-            <div class="about-badge">Depuis 2014</div>
-          </div>
-
-          <div class="about-content">
-            <span class="section-subtitle">Pourquoi nous choisir ?</span>
-            <h2 class="section-title">
-              Votre partenaire en solutions industrielles
-            </h2>
-            <p class="section-text">
-              Depuis sa création le 14 juin 2014, COGETS CONGO s'est imposée
-              comme une référence incontournable dans le domaine des travaux
-              industriels, aussi bien onshore qu'offshore.
-            </p>
-
-            <ul class="about-list">
-              <li class="about-item">
-                <div class="about-icon">
-                  <i class="fas fa-check"></i>
-                </div>
-                <div>
-                  <h4>Résinage et sablage</h4>
-                  <p>Protection professionnelle des surfaces métalliques</p>
-                </div>
-              </li>
-
-              <li class="about-item">
-                <div class="about-icon">
-                  <i class="fas fa-check"></i>
-                </div>
-                <div>
-                  <h4>Plomberie haute pression</h4>
-                  <p>Interventions techniques en milieux exigeants</p>
-                </div>
-              </li>
-
-              <li class="about-item">
-                <div class="about-icon">
-                  <i class="fas fa-check"></i>
-                </div>
-                <div>
-                  <h4>Expertise offshore</h4>
-                  <p>Solutions adaptées aux environnements maritimes</p>
-                </div>
-              </li>
-            </ul>
-
-            <a href="qui_sommes.html" class="btn">En savoir plus</a>
-          </div>
+        <div class="section-header">
+          <span class="section-subtitle">Nous sommes là pour vous</span>
+          <h2 class="section-title">Prenez contact avec nous</h2>
+          <p class="section-text">
+            Remplissez le formulaire ou utilisez nos coordonnées ci-dessous pour
+            nous joindre. Notre équipe vous répondra dans les plus brefs délais.
+          </p>
         </div>
-      </div>
-    </section>
 
-    <!-- SERVICES SECTION -->
-    <section class="section services-section" id="services">
-      <div class="container">
-        <span class="section-subtitle">Nos domaines d'expertise</span>
-        <h2 class="section-title">Services Professionnels</h2>
-        <p class="section-text">
-          COGETS CONGO intervient sur un large éventail de missions techniques,
-          allant du résinage et du sablage de surfaces, jusqu'à la plomberie
-          haute pression, en passant par des travaux spécialisés.
-        </p>
+        <div class="contact-container">
+          <!-- Colonne de gauche - Informations de contact -->
+          <div class="contact-info">
+            <div class="contact-info-box">
+              <h3>Nos coordonnées</h3>
 
-        <div class="services-grid">
-          <!-- Service 1 -->
-          <div class="service-card">
-            <div class="service-image">
-              <img src="assets/images/2.png" alt="Résinage et sablage" />
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Adresse</h4>
+                  <p>
+                    123 Avenue des Industries, Pointe-Noire, République du Congo
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Téléphone</h4>
+                  <p>
+                    <a href="tel:+242066666666">+242 06 666 66 66</a><br />
+                    <a href="tel:+242055555555">+242 05 555 55 55</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Email</h4>
+                  <p>
+                    <a href="mailto:info@cogetscongo.com"
+                      >info@cogetscongo.com</a
+                    ><br />
+                    <a href="mailto:commercial@cogetscongo.com"
+                      >commercial@cogetscongo.com</a
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="service-content">
-              <span class="service-number">01</span>
-              <h3 class="service-title">Résinage et sablage</h3>
-              <p class="service-text">
-                Protection et rénovation des surfaces métalliques grâce à des
-                procédés professionnels adaptés aux environnements extrêmes.
+
+            <div class="hours-box">
+              <h3>Heures d'ouverture</h3>
+              <ul class="hours-list">
+                <li class="hours-item">
+                  <span class="day">Lundi - Vendredi</span>
+                  <span>7h30 - 17h30</span>
+                </li>
+                <li class="hours-item">
+                  <span class="day">Samedi</span>
+                  <span>8h00 - 13h00</span>
+                </li>
+                <li class="hours-item">
+                  <span class="day">Dimanche</span>
+                  <span>Fermé</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15920.236134408443!2d11.85534960976202!3d-4.782812649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a62e4bcd3e8d1f9%3A0x96c0b6d3d0f8b0e1!2sPointe-Noire%2C%20Republic%20of%20the%20Congo!5e0!3m2!1sen!2sus!4v1655400000000!5m2!1sen!2sus"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Colonne de droite - Formulaire de contact -->
+          <div class="contact-form">
+            <div class="contact-form-box">
+              <h3>Envoyez-nous un message</h3>
+              <p>
+                Remplissez le formulaire ci-dessous et notre équipe vous
+                contactera dans les plus brefs délais.
               </p>
-              <a href="#" class="service-link">
-                En savoir plus <i class="fas fa-arrow-right"></i>
-              </a>
+
+              <form class="contact-form">
+                <div class="form-group">
+                  <label for="name">Nom complet *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Adresse email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Téléphone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Sujet *</label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    class="form-control"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Sélectionnez un sujet
+                    </option>
+                    <option value="devis">Demande de devis</option>
+                    <option value="service">Information sur un service</option>
+                    <option value="partenariat">
+                      Proposition de partenariat
+                    </option>
+                    <option value="recrutement">Recrutement</option>
+                    <option value="autre">Autre demande</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-control"
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  Envoyer le message
+                </button>
+              </form>
             </div>
           </div>
-
-          <!-- Service 2 -->
-          <div class="service-card">
-            <div class="service-image">
-              <img
-                src="assets/images/project-3.jpg"
-                alt="Plomberie haute pression"
-              />
-            </div>
-            <div class="service-content">
-              <span class="service-number">02</span>
-              <h3 class="service-title">Plomberie haute pression</h3>
-              <p class="service-text">
-                Intervention sur sites industriels avec équipements adaptés aux
-                environnements extrêmes et conditions de haute pression.
-              </p>
-              <a href="#" class="service-link">
-                En savoir plus <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Service 3 -->
-          <div class="service-card">
-            <div class="service-image">
-              <img
-                src="assets/images/about-banner.jpg"
-                alt="Travaux offshore"
-              />
-            </div>
-            <div class="service-content">
-              <span class="service-number">03</span>
-              <h3 class="service-title">Travaux offshore</h3>
-              <p class="service-text">
-                Pose spécialisée pour plateformes pétrolières et installations
-                maritimes avec des matériaux adaptés aux conditions extrêmes.
-              </p>
-              <a href="#" class="service-link">
-                En savoir plus <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURES SECTION -->
-    <section class="section features-section">
-      <div class="container">
-        <div class="features-container">
-          <!-- Feature 1 -->
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3 class="feature-title">Sécurité</h3>
-            <p class="feature-text">
-              Nos interventions respectent les normes de sécurité les plus
-              strictes pour garantir la protection de tous.
-            </p>
-          </div>
-
-          <!-- Feature 2 -->
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-certificate"></i>
-            </div>
-            <h3 class="feature-title">Qualité</h3>
-            <p class="feature-text">
-              Une qualité de service irréprochable avec des matériaux haut de
-              gamme et des techniques éprouvées.
-            </p>
-          </div>
-
-          <!-- Feature 3 -->
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <h3 class="feature-title">Réactivité</h3>
-            <p class="feature-text">
-              Intervention rapide sur tout le territoire avec une équipe
-              disponible 24h/24 pour les urgences.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section class="section projects-section">
-      <div class="container">
-        <span class="section-subtitle">Nos réalisations</span>
-        <h2 class="section-title">Projets Récents</h2>
-        <p class="section-text">
-          Découvrez quelques-unes de nos réalisations qui témoignent de notre
-          expertise et de notre engagement qualité.
-        </p>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/hero-banner.jpg" alt="Projet offshore" />
-            </div>
-            <div class="project-overlay">
-              <h3 class="project-title">Plateforme pétrolière</h3>
-              <p class="project-category">Revamping offshore</p>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="project-image">
-              <img
-                src="assets/images/project-1.jpg"
-                alt="Installation industrielle"
-              />
-            </div>
-            <div class="project-overlay">
-              <h3 class="project-title">Usine de traitement</h3>
-              <p class="project-category">Résinage industriel</p>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/7.png" alt="Chantier naval" />
-            </div>
-            <div class="project-overlay">
-              <h3 class="project-title">Chantier naval</h3>
-              <p class="project-category">Chaudronnerie</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center" style="margin-top: 40px">
-          <a href="galerie.html" class="btn">Voir tous nos projets</a>
         </div>
       </div>
     </section>
@@ -1029,7 +916,9 @@
             <h3 class="footer-list-title">Liens rapides</h3>
             <ul>
               <li><a href="index.html" class="footer-link">Accueil</a></li>
-              <li><a href="#services" class="footer-link">Services</a></li>
+              <li>
+                <a href="index.html#service" class="footer-link">Services</a>
+              </li>
               <li><a href="galerie.html" class="footer-link">Galerie</a></li>
               <li>
                 <a href="qui_sommes.html" class="footer-link"

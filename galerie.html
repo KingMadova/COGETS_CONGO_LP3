@@ -1,66 +1,606 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <!--  *****   Link To Custom CSS Style Sheet   *****  -->
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerie - COGETS CONGO</title>
 
-    <!--  *****   Link To Font Awsome Icons   *****  -->
+    <!-- Style intégré -->
+    <style>
+      /* RESET ET STYLES DE BASE */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rubik", sans-serif;
+      }
+
+      :root {
+        --primary-color: #1e3a8a;
+        --secondary-color: #f59e0b;
+        --dark-color: #1f2937;
+        --light-color: #f8f9fa;
+        --gray-color: #6b7280;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: #fff;
+        color: var(--dark-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--dark-color);
+        text-align: center;
+      }
+
+      .section-subtitle {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .section-text {
+        font-size: 1.1rem;
+        color: var(--gray-color);
+        max-width: 700px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        border: 2px solid var(--primary-color);
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+      }
+
+      /* HEADER */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 20px 0;
+      }
+
+      .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .navbar {
+        display: flex;
+      }
+
+      .navbar-list {
+        display: flex;
+        list-style: none;
+      }
+
+      .navbar-item {
+        margin-left: 30px;
+      }
+
+      .navbar-link {
+        color: var(--dark-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: var(--transition);
+        position: relative;
+        padding: 5px 0;
+      }
+
+      .navbar-link:hover,
+      .navbar-link.active {
+        color: var(--primary-color);
+      }
+
+      .navbar-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .navbar-link:hover::after,
+      .navbar-link.active::after {
+        width: 100%;
+      }
+
+      .header-contact {
+        display: flex;
+        align-items: center;
+        background-color: var(--primary-color);
+        padding: 10px 20px;
+        border-radius: 6px;
+        color: white;
+      }
+
+      .contact-label {
+        font-size: 0.9rem;
+        margin-right: 10px;
+      }
+
+      .contact-number {
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .contact-icon {
+        margin-left: 10px;
+        font-size: 1.2rem;
+      }
+
+      .nav-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("assets/images/hero-banner.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        margin-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .hero-text {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      /* GALLERY SECTION */
+      .gallery-section {
+        background-color: var(--light-color);
+        padding: 80px 0;
+      }
+
+      .gallery-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+
+      .filter-btn {
+        padding: 10px 25px;
+        background-color: white;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 300px;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: white;
+        transform: translateY(100%);
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+      }
+
+      .gallery-title {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .gallery-category {
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* PROJECT MODAL */
+      .project-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .project-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 900px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--dark-color);
+        cursor: pointer;
+        z-index: 10;
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .modal-image {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .modal-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .modal-category {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .modal-description {
+        color: var(--dark-color);
+        line-height: 1.7;
+      }
+
+      /* FOOTER */
+      .footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 60px 0 20px;
+      }
+
+      .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .footer-text {
+        margin-bottom: 20px;
+      }
+
+      .social-list {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-list {
+        min-width: 200px;
+      }
+
+      .footer-list-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-list-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background-color: var(--secondary-color);
+      }
+
+      .footer-list li {
+        margin-bottom: 10px;
+      }
+
+      .footer-link {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-link:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .copyright {
+        color: #9ca3af;
+      }
+
+      .copyright-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 992px) {
+        .section {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .header-contact {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          display: none;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        .hero {
+          height: 40vh;
+        }
+
+        .hero-title {
+          font-size: 2.2rem;
+        }
+
+        .hero-text {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .section {
+          padding: 40px 0;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .section-subtitle {
+          font-size: 0.9rem;
+        }
+
+        .hero-title {
+          font-size: 1.8rem;
+        }
+
+        .footer-top {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <!-- Font Awesome pour les icônes -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galeries | Projets</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <!-- 
-    - #HEADER
-  -->
 
-    <header class="header" data-header>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
       <div class="container">
         <h1>
-          <a href="index.html" class="logo">COGETS CONGO </a>
+          <a href="index.html" class="logo">COGETS CONGO</a>
         </h1>
 
-        <nav class="navbar" data-navbar>
-          <div class="navbar-top">
-            <a href="#home" class="logo">COGETS CONGO </a>
-
-            <button
-              class="nav-close-btn"
-              aria-label="Clsoe menu"
-              data-nav-toggler
-            >
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </div>
-
+        <nav class="navbar">
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="index.html" class="navbar-link" data-nav-link>
-                <span>Accueil</span>
-
-                <ion-icon name="chevron-forward"></ion-icon>
-              </a>
+              <a href="index.html" class="navbar-link">Accueil</a>
             </li>
-
             <li class="navbar-item">
-              <a href="galerie.html" class="navbar-link" data-nav-link>
-                <span>Galerie</span>
-
-                <ion-icon name="chevron-forward"></ion-icon>
-              </a>
+              <a href="#services" class="navbar-link">Services</a>
             </li>
-
             <li class="navbar-item">
-              <a href="qui_sommes.html" class="navbar-link" data-nav-link>
-                <span>Qui sommes-nous </span>
-
-                <ion-icon name="chevron-forward"></ion-icon>
-              </a>
+              <a href="galerie.html" class="navbar-link active">Galerie</a>
+            </li>
+            <li class="navbar-item">
+              <a href="qui_sommes.html" class="navbar-link">Qui sommes-nous</a>
+            </li>
+            <li class="navbar-item">
+              <a href="contact.html" class="navbar-link">Contact</a>
             </li>
           </ul>
         </nav>
@@ -68,232 +608,491 @@
         <div class="header-contact">
           <div>
             <p class="contact-label">Centre d'Appel</p>
-
             <a href="tel:12345678910" class="contact-number">1 234 567 8910</a>
           </div>
-
           <div class="contact-icon">
-            <ion-icon name="call-outline"></ion-icon>
+            <i class="fas fa-phone-alt"></i>
           </div>
         </div>
 
-        <button class="nav-open-btn" aria-label="Open menu" data-nav-toggler>
-          <ion-icon name="menu-outline"></ion-icon>
-        </button>
-
-        <div class="overlay" data-nav-toggler data-overlay></div>
+        <div class="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
     </header>
-    <section class="portfolio">
-      <section id="galerie" class="portfolio">
-        <div class="section-head">
-          <h1>Galerie de nos projets</h1>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Notre Galerie de Projets</h1>
+          <p class="hero-text">
+            Découvrez nos réalisations en solutions industrielles onshore et
+            offshore
+          </p>
         </div>
-
-        <div class="button-group">
-          <button class="button active" data-filter="*">Tous</button>
-          <button class="button" data-filter=".design">Emeraude</button>
-          <button class="button" data-filter=".development">
-            instrum EMVU
-          </button>
-          <button class="button" data-filter=".logo">Resinage sur MIKE</button>
-        </div>
-
-        <div class="gallery">
-          <div class="item design">
-            <img src="assets/images/4.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <!-- <div class="item design">
-            <img src="assets/images/3.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div> -->
-          <div class="item design">
-            <img src="assets/images/2.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item development">
-            <img src="assets/images/project-1.jpg" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item development">
-            <img src="assets/images/6.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item development">
-            <img src="assets/images/5.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item logo">
-            <img src="assets/images/blog-1.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item design">
-            <img src="assets/images/11.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item design">
-            <img src="assets/images/8.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item logo">
-            <img src="assets/images/1.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item logo">
-            <img src="assets/images/10.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item development">
-            <img src="assets/images/9.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-          <div class="item development">
-            <img src="assets/images/7.png" />
-            <div class="overlay"><a href="#">VIEW MORE</a></div>
-          </div>
-        </div>
-      </section>
-
-      <!--   *****   JQuery Link   *****   -->
-      <!-- JQuery -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-      <!-- Isotope -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-
-      <script>
-        var $galleryContainer = $(".gallery").isotope({
-          itemSelector: ".item",
-          layoutMode: "fitRows"
-        });
-
-        $(".button-group .button").on("click", function () {
-          $(".button-group .button").removeClass("active");
-          $(this).addClass("active");
-          var value = $(this).attr("data-filter");
-          $galleryContainer.isotope({ filter: value });
-        });
-      </script>
+      </div>
     </section>
 
-    <!-- 
-    - #FOOTER
-  -->
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Nos réalisations</span>
+          <h2 class="section-title">Projets Industriels</h2>
+          <p class="section-text">
+            Explorez notre portfolio de projets réalisés pour nos clients dans
+            les secteurs onshore et offshore.
+          </p>
+        </div>
 
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">
+            Tous les projets
+          </button>
+          <button class="filter-btn" data-filter="emeraude">
+            Plateforme Emeraude
+          </button>
+          <button class="filter-btn" data-filter="emvu">Instrum EMVU</button>
+          <button class="filter-btn" data-filter="mike">
+            Résinage sur MIKE
+          </button>
+          <button class="filter-btn" data-filter="offshore">
+            Travaux Offshore
+          </button>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Project 1 -->
+          <div class="gallery-item" data-category="emeraude">
+            <img
+              src="assets/images/4.png"
+              alt="Plateforme Emeraude"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Plateforme Emeraude</h3>
+              <p class="gallery-category">Travaux de résinage</p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="gallery-item" data-category="emeraude">
+            <img
+              src="assets/images/2.png"
+              alt="Plateforme Emeraude"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Plateforme Emeraude</h3>
+              <p class="gallery-category">Installations techniques</p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="gallery-item" data-category="emvu">
+            <img
+              src="assets/images/project-1.jpg"
+              alt="Instrum EMVU"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Instrum EMVU</h3>
+              <p class="gallery-category">Instrumentation industrielle</p>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="gallery-item" data-category="emvu">
+            <img
+              src="assets/images/6.png"
+              alt="Instrum EMVU"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Instrum EMVU</h3>
+              <p class="gallery-category">Systèmes de contrôle</p>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="gallery-item" data-category="emvu">
+            <img
+              src="assets/images/5.png"
+              alt="Instrum EMVU"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Instrum EMVU</h3>
+              <p class="gallery-category">Installation électrique</p>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="gallery-item" data-category="mike">
+            <img
+              src="assets/images/blog-1.png"
+              alt="Résinage sur MIKE"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Résinage sur MIKE</h3>
+              <p class="gallery-category">Protection de surface</p>
+            </div>
+          </div>
+
+          <!-- Project 7 -->
+          <div class="gallery-item" data-category="emeraude">
+            <img
+              src="assets/images/11.png"
+              alt="Plateforme Emeraude"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Plateforme Emeraude</h3>
+              <p class="gallery-category">Maintenance offshore</p>
+            </div>
+          </div>
+
+          <!-- Project 8 -->
+          <div class="gallery-item" data-category="emeraude">
+            <img
+              src="assets/images/8.png"
+              alt="Plateforme Emeraude"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Plateforme Emeraude</h3>
+              <p class="gallery-category">Soudure spécialisée</p>
+            </div>
+          </div>
+
+          <!-- Project 9 -->
+          <div class="gallery-item" data-category="mike">
+            <img
+              src="assets/images/1.png"
+              alt="Résinage sur MIKE"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Résinage sur MIKE</h3>
+              <p class="gallery-category">Application industrielle</p>
+            </div>
+          </div>
+
+          <!-- Project 10 -->
+          <div class="gallery-item" data-category="mike">
+            <img
+              src="assets/images/10.png"
+              alt="Résinage sur MIKE"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Résinage sur MIKE</h3>
+              <p class="gallery-category">Contrôle qualité</p>
+            </div>
+          </div>
+
+          <!-- Project 11 -->
+          <div class="gallery-item" data-category="offshore">
+            <img
+              src="assets/images/9.png"
+              alt="Travaux Offshore"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Travaux Offshore</h3>
+              <p class="gallery-category">Installation de pipelines</p>
+            </div>
+          </div>
+
+          <!-- Project 12 -->
+          <div class="gallery-item" data-category="offshore">
+            <img
+              src="assets/images/7.png"
+              alt="Travaux Offshore"
+              class="gallery-image"
+            />
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Travaux Offshore</h3>
+              <p class="gallery-category">Maintenance préventive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT MODAL -->
+    <div class="project-modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img src="" alt="" class="modal-image" />
+        <h2 class="modal-title">Titre du projet</h2>
+        <span class="modal-category">Catégorie</span>
+        <p class="modal-description">Description détaillée du projet...</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <div class="footer-top section">
+        <div class="footer-top">
           <div class="footer-brand">
-            <a href="#" class="logo">COGETS CONGO </a>
-
+            <a href="index.html" class="footer-logo">COGETS CONGO</a>
             <p class="footer-text">
-              Depuis sa création le 14 juin 2014, COGETS CONGO s’est imposée
+              Depuis sa création le 14 juin 2014, COGETS CONGO s'est imposée
               comme une référence incontournable dans le domaine des travaux
-              industriels, aussi bien onshore qu’offshore.
+              industriels, aussi bien onshore qu'offshore.
             </p>
-
             <ul class="social-list">
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
               </li>
-
               <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
               </li>
             </ul>
           </div>
 
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Liens rapides</p>
-            </li>
+          <div class="footer-list">
+            <h3 class="footer-list-title">Liens rapides</h3>
+            <ul>
+              <li><a href="index.html" class="footer-link">Accueil</a></li>
+              <li><a href="#services" class="footer-link">Services</a></li>
+              <li><a href="galerie.html" class="footer-link">Galerie</a></li>
+              <li>
+                <a href="qui_sommes.html" class="footer-link"
+                  >Qui sommes-nous</a
+                >
+              </li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
 
-            <li>
-              <a href="index.html" class="footer-link">Accueil</a>
-            </li>
+          <div class="footer-list">
+            <h3 class="footer-list-title">Nos services</h3>
+            <ul>
+              <li><a href="#" class="footer-link">Résinage et sablage</a></li>
+              <li>
+                <a href="#" class="footer-link">Plomberie haute pression</a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">Carrelage grillagé offshore</a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">Soudure & Chaudronnerie</a>
+              </li>
+              <li><a href="#" class="footer-link">Revamping offshore</a></li>
+            </ul>
+          </div>
 
-            <li>
-              <a href="index.html" class="footer-link">Services</a>
-            </li>
-
-            <li>
-              <a href="galerie.html" class="footer-link">Galerie</a>
-            </li>
-
-            <li>
-              <a href="qui_sommes.html" class="footer-link">Qui sommes-nous</a>
-            </li>
-          </ul>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Services</p>
-            </li>
-
-            <li>Résinage et sablage</li>
-
-            <li>Plomberie haute pression</li>
-
-            <li>Carrelage grillagé offshore</li>
-
-            <li>Soudure & Chaudronnerie</li>
-
-            <li>Revamping offshore</li>
-          </ul>
+          <div class="footer-list">
+            <h3 class="footer-list-title">Contact</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Avenue des Industries,
+                Pointe-Noire
+              </li>
+              <li><i class="fas fa-phone-alt"></i> +242 06 666 66 66</li>
+              <li><i class="fas fa-envelope"></i> info@cogetscongo.com</li>
+            </ul>
+          </div>
         </div>
 
         <div class="footer-bottom">
           <p class="copyright">
-            &copy; 2025 COGETS CONGO. All Rights Reserved by
+            &copy; 2025 COGETS CONGO. Tous droits réservés par
             <a href="#" class="copyright-link">YekolaTech</a>
           </p>
         </div>
       </div>
     </footer>
-    <!-- 
-    - #BACK TO TOP
-  -->
 
-    <a
-      href="#top"
-      class="back-top-btn"
-      aria-label="Back to top"
-      data-back-top-btn
-    >
-      <ion-icon name="chevron-up"></ion-icon>
-    </a>
+    <!-- SCRIPT POUR LA GALERIE -->
+    <script>
+      // Toggle du menu mobile
+      const navToggle = document.querySelector(".nav-toggle");
+      const navbar = document.querySelector(".navbar");
 
-    <!-- 
-    - custom js link
-  -->
-    <script src="./assets/js/script.js" defer></script>
+      navToggle.addEventListener("click", () => {
+        navbar.style.display =
+          navbar.style.display === "flex" ? "none" : "flex";
+      });
 
-    <!-- 
-    - ionicon link
-  -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+      // Fermer le menu quand on clique sur un lien
+      const navLinks = document.querySelectorAll(".navbar-link");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            navbar.style.display = "none";
+          }
+        });
+      });
+
+      // Adaptation au redimensionnement
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          navbar.style.display = "flex";
+        } else {
+          navbar.style.display = "none";
+        }
+      });
+
+      // Filtrage des projets
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Retirer la classe active de tous les boutons
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          // Ajouter la classe active au bouton cliqué
+          btn.classList.add("active");
+
+          const filter = btn.getAttribute("data-filter");
+
+          galleryItems.forEach((item) => {
+            if (
+              filter === "all" ||
+              item.getAttribute("data-category") === filter
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Modal pour les projets
+      const modal = document.querySelector(".project-modal");
+      const modalImage = document.querySelector(".modal-image");
+      const modalTitle = document.querySelector(".modal-title");
+      const modalCategory = document.querySelector(".modal-category");
+      const modalDescription = document.querySelector(".modal-description");
+      const modalClose = document.querySelector(".modal-close");
+
+      // Données des projets (pour la démonstration)
+      const projects = {
+        "4.png": {
+          title: "Plateforme Emeraude - Travaux de résinage",
+          category: "Plateforme Emeraude",
+          description:
+            "Travaux de résinage professionnel effectués sur la plateforme Emeraude. Notre équipe a appliqué un revêtement protecteur de haute qualité pour assurer la durabilité des structures métalliques dans l'environnement marin exigeant."
+        },
+        "2.png": {
+          title: "Installations techniques sur Emeraude",
+          category: "Plateforme Emeraude",
+          description:
+            "Installation de systèmes techniques complexes sur la plateforme Emeraude. Nos ingénieurs ont conçu et mis en place des solutions adaptées aux contraintes spécifiques de l'environnement offshore."
+        },
+        "project-1.jpg": {
+          title: "Instrumentation EMVU",
+          category: "Instrum EMVU",
+          description:
+            "Installation de systèmes d'instrumentation de pointe pour le projet EMVU. Ces équipements permettent un contrôle précis des processus industriels dans des conditions extrêmes."
+        },
+        "6.png": {
+          title: "Systèmes de contrôle EMVU",
+          category: "Instrum EMVU",
+          description:
+            "Mise en place de systèmes de contrôle automatisés pour le projet EMVU. Ces installations permettent une supervision centralisée des opérations industrielles avec une haute fiabilité."
+        },
+        "5.png": {
+          title: "Installation électrique EMVU",
+          category: "Instrum EMVU",
+          description:
+            "Installation complète du système électrique pour le projet EMVU. Notre équipe a conçu un réseau électrique robuste répondant aux normes de sécurité les plus strictes."
+        },
+        "blog-1.png": {
+          title: "Résinage sur plateforme MIKE",
+          category: "Résinage sur MIKE",
+          description:
+            "Application de résine protectrice sur les structures de la plateforme MIKE. Cette intervention prolonge la durée de vie des installations exposées aux éléments corrosifs."
+        },
+        "11.png": {
+          title: "Maintenance offshore sur Emeraude",
+          category: "Plateforme Emeraude",
+          description:
+            "Opérations de maintenance préventive réalisées sur la plateforme Emeraude. Notre équipe spécialisée intervient régulièrement pour garantir le bon fonctionnement des installations."
+        },
+        "8.png": {
+          title: "Soudure spécialisée offshore",
+          category: "Plateforme Emeraude",
+          description:
+            "Travaux de soudure de précision réalisés dans des conditions offshore difficiles. Nos soudeurs certifiés garantissent des joints parfaits répondant aux normes industrielles."
+        },
+        "1.png": {
+          title: "Application industrielle sur MIKE",
+          category: "Résinage sur MIKE",
+          description:
+            "Application de revêtements industriels sur la plateforme MIKE. Ces traitements de surface protègent les équipements contre la corrosion et l'usure."
+        },
+        "10.png": {
+          title: "Contrôle qualité du résinage",
+          category: "Résinage sur MIKE",
+          description:
+            "Contrôle qualité rigoureux après application du revêtement protecteur. Nos inspecteurs vérifient l'homogénéité et l'adhérence du revêtement pour garantir sa durabilité."
+        },
+        "9.png": {
+          title: "Installation de pipelines offshore",
+          category: "Travaux Offshore",
+          description:
+            "Pose de pipelines sous-marins pour un projet offshore majeur. Notre équipe a réalisé cette installation complexe avec une précision millimétrique."
+        },
+        "7.png": {
+          title: "Maintenance préventive offshore",
+          category: "Travaux Offshore",
+          description:
+            "Programme de maintenance préventive sur une installation offshore. Ces interventions régulières préviennent les pannes et assurent la continuité des opérations."
+        }
+      };
+
+      // Ouvrir le modal au clic sur une image
+      galleryItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const imageSrc = item.querySelector("img").src.split("/").pop();
+          const projectData = projects[imageSrc];
+
+          if (projectData) {
+            modalImage.src = item.querySelector("img").src;
+            modalTitle.textContent = projectData.title;
+            modalCategory.textContent = projectData.category;
+            modalDescription.textContent = projectData.description;
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden"; // Empêcher le défilement de la page
+          }
+        });
+      });
+
+      // Fermer le modal
+      modalClose.addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto"; // Rétablir le défilement
+      });
+
+      // Fermer le modal en cliquant à l'extérieur
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+    </script>
   </body>
 </html>
